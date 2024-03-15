@@ -1,8 +1,9 @@
 from django.db import transaction
 from rest_framework import serializers
-from shortener.urlshortener.utils.shortener import get_shortest_url
+
 from shortener.urlshortener.models import ShortURL
 from shortener.urlshortener.tasks import crawl_page_task
+from shortener.urlshortener.utils.shortener import get_shortest_url
 
 
 class GenerateShortURLSerializer(serializers.ModelSerializer):
@@ -39,4 +40,7 @@ class ShortURLDetailSerializer(serializers.ModelSerializer):
 class TopShortURLSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShortURL
-        fields = ("title", "views",)
+        fields = (
+            "title",
+            "views",
+        )

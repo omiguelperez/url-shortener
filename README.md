@@ -127,23 +127,23 @@ django: version: 4.2.11, settings: config.settings.test (from option)
 rootdir: /app
 configfile: pyproject.toml
 plugins: anyio-4.3.0, Faker-24.2.0, django-4.8.0, sugar-1.0.0
-collected 35 items                                                                                                                                                                                                         
+collected 38 items                                                                                                                                                                                                         
 
- shortener/users/tests/test_admin.py ✓✓✓✓✓                                                                                                                                                                    14% █▌        
- shortener/users/tests/test_drf_urls.py ✓✓✓                                                                                                                                                                   77% ███████▊  
- shortener/users/tests/test_drf_views.py ✓✓                                                                                                                                                                   23% ██▍       
- shortener/users/tests/test_forms.py ✓                                                                                                                                                                        26% ██▋       
- shortener/users/tests/test_models.py ✓                                                                                                                                                                       29% ██▉       
- shortener/users/tests/test_swagger.py ✓✓✓                                                                                                                                                                    37% ███▊      
- shortener/users/tests/test_tasks.py ✓                                                                                                                                                                        40% ████      
- shortener/users/tests/test_urls.py ✓✓✓                                                                                                                                                                       83% ████████▍ 
- shortener/users/tests/test_views.py ✓✓✓✓✓✓                                                                                                                                                                   60% ██████    
- shortener/urlshortener/tests/test_utils.py ✓✓✓✓                                                                                                                                                              71% ███████▎  
+ shortener/urlshortener/tests/test_views.py ✓✓✓                                                                                                                                                                8% ▊         
+ shortener/users/tests/test_admin.py ✓✓✓✓✓                                                                                                                                                                    21% ██▏       
+ shortener/users/tests/test_drf_urls.py ✓✓✓                                                                                                                                                                   79% ███████▉  
+ shortener/users/tests/test_drf_views.py ✓✓                                                                                                                                                                   29% ██▉       
+ shortener/users/tests/test_forms.py ✓                                                                                                                                                                        32% ███▎      
+ shortener/users/tests/test_models.py ✓                                                                                                                                                                       34% ███▌      
+ shortener/users/tests/test_swagger.py ✓✓✓                                                                                                                                                                    42% ████▎     
+ shortener/users/tests/test_tasks.py ✓                                                                                                                                                                        45% ████▌     
+ shortener/users/tests/test_urls.py ✓✓✓                                                                                                                                                                       84% ████████▌ 
+ shortener/users/tests/test_views.py ✓✓✓✓✓✓                                                                                                                                                                   63% ██████▍   
+ shortener/urlshortener/tests/test_utils.py ✓✓✓✓                                                                                                                                                              74% ███████▍  
  tests/test_merge_production_dotenvs_in_dotenv.py ✓✓✓✓✓✓                                                                                                                                                     100% ██████████
 
-Results (1.38s):
-      35 passed
-
+Results (0.73s):
+      38 passed
 ```
 
 ## Project Structure

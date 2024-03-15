@@ -1,7 +1,6 @@
 from django.conf import settings
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from rest_framework.routers import SimpleRouter
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter, SimpleRouter
 
 from shortener.users.api.views import UserViewSet
 
@@ -18,7 +17,9 @@ urlpatterns += [
         "url-shortener/",
         include(
             ("shortener.urlshortener.urls", "shortener.urlshortener"),
-            namespace="urlshortener"
-        )
+            namespace="urlshortener",
+        ),
     )
 ]
+
+print(urlpatterns)

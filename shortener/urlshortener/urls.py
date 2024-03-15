@@ -7,7 +7,7 @@ from shortener.urlshortener.api.views import (
 )
 
 urlpatterns = [
-    path('generate/', generate_short_url_view, name="generate"),
-    path('top/', top_urls_view, name="top"),
-    path('<shortened>/', get_shortened_url_view, name="get"),
+    path("generate/", generate_short_url_view, name="generate"),
+    path("top/", top_urls_view, name="top"),
+    path("<shortened>/", get_shortened_url_view, name="get"),
 ]
