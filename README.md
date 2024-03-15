@@ -111,6 +111,41 @@ Response
 ]
 ```
 
+### Tests
+
+You can run the tests:
+
+```bash
+docker compose run --rm django pytest
+```
+
+Result:
+
+```
+Test session starts (platform: linux, Python 3.11.8, pytest 8.1.1, pytest-sugar 1.0.0)
+django: version: 4.2.11, settings: config.settings.test (from option)
+rootdir: /app
+configfile: pyproject.toml
+plugins: anyio-4.3.0, Faker-24.2.0, django-4.8.0, sugar-1.0.0
+collected 35 items                                                                                                                                                                                                         
+
+ shortener/users/tests/test_admin.py ✓✓✓✓✓                                                                                                                                                                    14% █▌        
+ shortener/users/tests/test_drf_urls.py ✓✓✓                                                                                                                                                                   77% ███████▊  
+ shortener/users/tests/test_drf_views.py ✓✓                                                                                                                                                                   23% ██▍       
+ shortener/users/tests/test_forms.py ✓                                                                                                                                                                        26% ██▋       
+ shortener/users/tests/test_models.py ✓                                                                                                                                                                       29% ██▉       
+ shortener/users/tests/test_swagger.py ✓✓✓                                                                                                                                                                    37% ███▊      
+ shortener/users/tests/test_tasks.py ✓                                                                                                                                                                        40% ████      
+ shortener/users/tests/test_urls.py ✓✓✓                                                                                                                                                                       83% ████████▍ 
+ shortener/users/tests/test_views.py ✓✓✓✓✓✓                                                                                                                                                                   60% ██████    
+ shortener/urlshortener/tests/test_utils.py ✓✓✓✓                                                                                                                                                              71% ███████▎  
+ tests/test_merge_production_dotenvs_in_dotenv.py ✓✓✓✓✓✓                                                                                                                                                     100% ██████████
+
+Results (1.38s):
+      35 passed
+
+```
+
 ## Project Structure
 
 ### Stack
@@ -139,3 +174,10 @@ If you check the docker compose file (`local.yml`) you'll see those services:
 - `flower`: dashboard to see the Celery tasks
 
 The Django app and the Celery workers are independent so they can be scaling independently based on needs.
+
+
+### Next steps
+
+- More tests for Celery Tasks and Views
+- Use a better URL shortener algorithm
+
