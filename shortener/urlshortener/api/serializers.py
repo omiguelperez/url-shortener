@@ -1,36 +1,32 @@
+from django.db import transaction
 from rest_framework import serializers
-from shortener.urlshortener.utils import get_short_url
+from shortener.urlshortener.utils.shortener import get_shortest_url
 from shortener.urlshortener.models import ShortURL
-from shortener.urlshortener.tasks import pull_content_from_url
+from shortener.urlshortener.tasks import crawl_page_task
 
 
 class GenerateShortURLSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShortURL
-        fields = ("url", "short_url")
-        read_only_fields = ("short_url",)
-
-    def validate(self, attrs):
-        url = attrs["url"]
-        # TODO: validations
-        return attrs
+        fields = ("url", "shortened")
+        read_only_fields = ("shortened",)
 
     def save(self, **kwargs):
         url = self.validated_data["url"]
 
-        self.context["short_url"] = get_short_url(url)
+        self.context["shortened"] = get_shortest_url(url)
         short_url = ShortURL.objects.create(
             url=url,
-            short_url=self.context["short_url"],
+            shortened=self.context["shortened"],
         )
 
-        pull_content_from_url.delay(pk=short_url.id)
+        transaction.on_commit(lambda: crawl_page_task.delay(pk=short_url.id))
 
         return short_url
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
-        data["short_url"] = self.context["short_url"]
+        data["shortened"] = self.context["shortened"]
         return data
 
 
@@ -43,4 +39,4 @@ class ShortURLDetailSerializer(serializers.ModelSerializer):
 class TopShortURLSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShortURL
-        fields = ("content", "views",)
+        fields = ("title", "views",)

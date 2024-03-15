@@ -10,28 +10,28 @@ from shortener.urlshortener.api.serializers import (
 from shortener.urlshortener.models import ShortURL
 
 
-class ShortURLView(CreateAPIView):
+class GenerateShortURlView(CreateAPIView):
     serializer_class = GenerateShortURLSerializer
     queryset = ShortURL.objects.all()
 
 
-generate_short_url_view = ShortURLView.as_view()
+generate_short_url_view = GenerateShortURlView.as_view()
 
 
-class ShortURLView(RetrieveAPIView):
+class GetShortenedURLView(RetrieveAPIView):
     queryset = ShortURL.objects.all()
     serializer_class = ShortURLDetailSerializer
-    lookup_field = 'short_url'
+    lookup_field = 'shortened'
 
     def get_object(self):
         obj = super().get_object()
-        obj.views += 1
+        obj.view()
         obj.save()
 
         return obj
 
 
-short_url_detail_view = ShortURLView.as_view()
+get_shortened_url_view = GetShortenedURLView.as_view()
 
 
 class TopURLsView(ListAPIView):
