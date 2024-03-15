@@ -113,16 +113,22 @@ Response
 
 ## Project Structure
 
-This project was generated with cookiecutter-django.
-
-This is the stack:
+### Stack
 - Django (with Django REST Framework)
 - PostgreSQL
 - Celery 
 - Redis
 
+### Directories
 
-## Docker services
+- `compose`: docker-related files
+- `config`: django project configs, settings, urls, etc
+- `requirements`: python dependendies per environment
+- `shortener`: the project dir containing django apps
+  - `urlshortener`: our main django app with exposing the shortener feature
+
+
+### Docker services
 
 If you check the docker compose file (`local.yml`) you'll see those services:
 
